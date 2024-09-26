@@ -1,4 +1,4 @@
-name: falcon-linux-sensor
+name: falcon-sensor
 version: 1.0.0
 commit_hash: ec3c970
 uncommitted_changes: true
