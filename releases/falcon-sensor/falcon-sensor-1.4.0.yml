@@ -1,0 +1,32 @@
+name: falcon-sensor
+version: 1.4.0
+commit_hash: 8878b4d
+uncommitted_changes: false
+jobs:
+- name: falcon-linux-sensor
+  version: e9a6cb1408159f0bdb3a93ef4aed59399a2f832dc699610a9ad7b8d69e2725a4
+  fingerprint: e9a6cb1408159f0bdb3a93ef4aed59399a2f832dc699610a9ad7b8d69e2725a4
+  sha1: sha256:65f4c8948ae7fc6dcbc33482d95c30730b46ab82e14a3714453244580ca86bf1
+  packages:
+  - falcon-linux-sensor
+- name: falcon-windows-sensor
+  version: 3e0eda5484615b7ce0d3c56aa6144be89808ba2d4a93383a5b0a8884737fdb33
+  fingerprint: 3e0eda5484615b7ce0d3c56aa6144be89808ba2d4a93383a5b0a8884737fdb33
+  sha1: sha256:b054c2d08253a310d00b143bf40b7bace441784325272982422e115e9ca893ff
+  packages:
+  - falcon-windows-sensor
+packages:
+- name: falcon-linux-sensor
+  version: ed8b097ba4eec404ccf12b7c7fc6c4c42fcf3eb8d410b668959dd5bbe92b0d97
+  fingerprint: ed8b097ba4eec404ccf12b7c7fc6c4c42fcf3eb8d410b668959dd5bbe92b0d97
+  sha1: sha256:b14fe90d02433bcf1a7948eaea7f793c7086154ae2343a4b73d911a8d4acc6e4
+  dependencies: []
+- name: falcon-windows-sensor
+  version: 78cd63de513b00aef44dc96b246fcb4b1b62d8a5980a56438f2fb1ae7a6821e1
+  fingerprint: 78cd63de513b00aef44dc96b246fcb4b1b62d8a5980a56438f2fb1ae7a6821e1
+  sha1: sha256:12a383b70718924cc0f35ed94ba53ed1a0a2f5b217957b544ca5967efe0b3025
+  dependencies: []
+license:
+  version: 205debb9fd314d2daf1f31088dc278a9aa33de3dbfc10cd87b6ff8ddd32afcc0
+  fingerprint: 205debb9fd314d2daf1f31088dc278a9aa33de3dbfc10cd87b6ff8ddd32afcc0
+  sha1: sha256:12cd857a742e0f5d7806918edd281dcb456e25f061b571c6e9d41dc241d6aec4
