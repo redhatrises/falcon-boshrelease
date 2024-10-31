@@ -52,7 +52,8 @@ jobs:
       - name: Generate ATTRIBUTION
         run: |
           go install github.com/google/go-licenses@latest
-          go-licenses report github.com/crowdstrike/falcon-installer --template license.tmpl> ATTRIBUTION.md
+          go-licenses report github.com/crowdstrike/falcon-installer --template .license.tmpl > ATTRIBUTION.md
+          cp ATTRIBUTION.md "Open Source Disclosure File CrowdStrike Falcon.txt"
 
       - name: Set Release Version
         run: |
@@ -79,6 +80,6 @@ jobs:
 
       - name: Update artifacts to release
         run: |
-          gh release upload $TAG tile/releases/falcon-boshrelease.tgz tile/*.pivotal
+          gh release upload $TAG tile/releases/falcon-boshrelease.tgz tile/*.pivotal "Open Source Disclosure File CrowdStrike Falcon.txt"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
