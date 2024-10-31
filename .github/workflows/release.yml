@@ -49,10 +49,8 @@ jobs:
 
           rm final_blobs/{falcon-installer,falcon-installer.exe,README.md,LICENSE}
 
-      - name: Generate ATTRIBUTION
+      - name: Generate disclosure file
         run: |
-          go install github.com/google/go-licenses@latest
-          go-licenses report github.com/crowdstrike/falcon-installer --template .license.tmpl > ATTRIBUTION.md
           cp ATTRIBUTION.md "Open Source Disclosure File CrowdStrike Falcon.txt"
 
       - name: Set Release Version
