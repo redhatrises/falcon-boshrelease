@@ -49,6 +49,11 @@ jobs:
 
           rm final_blobs/{falcon-installer,falcon-installer.exe,README.md,LICENSE}
 
+      - name: Generate ATTRIBUTION
+        run: |
+          go install github.com/google/go-licenses@latest
+          go-licenses report github.com/crowdstrike/falcon-installer --template license.tmpl> ATTRIBUTION.md
+
       - name: Set Release Version
         run: |
           echo "VERSION=$(echo $TAG | sed s/v//g)" >> $GITHUB_ENV
@@ -66,7 +71,7 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add final_blobs config releases tile
+          git add final_blobs config releases tile ATTRIBUTION.md
           git commit -m "Updating release components for ${TAG}"
           git push origin HEAD:${{ github.event.release.target_commitish }}
           git tag -f "${GITHUB_REF#refs/tags/}"
