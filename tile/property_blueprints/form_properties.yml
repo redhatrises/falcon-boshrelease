@@ -47,6 +47,7 @@
   label: Use Sensor Proxy
   description: Use the sensor proxy settings instead of the system proxy during installation.
   optional: true
+  configurable: true
 
 - name: aph
   type: string
