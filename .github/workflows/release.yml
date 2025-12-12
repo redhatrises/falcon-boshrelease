@@ -36,6 +36,10 @@ jobs:
           curl -sSLo /tmp/kiln https://github.com/pivotal-cf/kiln/releases/latest/download/kiln-linux-amd64-${KILNREL}
           chmod +x /tmp/kiln && sudo mv /tmp/kiln /usr/local/bin/kiln
 
+      - name: Create bosh release
+        run: |
+          bosh create-release --force --final --tarball=tile/releases/falcon-boshrelease.tgz --version ${VERSION}
+
       - name: Set Release Version
         run: |
           echo "VERSION=$(echo $TAG | sed s/v//g)" >> $GITHUB_ENV
