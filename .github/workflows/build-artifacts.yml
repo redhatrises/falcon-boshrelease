@@ -1,4 +1,4 @@
-name: Build Artifacts
+name: Build Release Artifacts
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  build-artifacts:
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -116,6 +116,8 @@ jobs:
           - Updated falcon-installer to latest version
           - Created bosh release ${VERSION}
           - Generated pivotal tile for ${VERSION}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Output summary
         run: |
