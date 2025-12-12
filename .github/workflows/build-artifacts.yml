@@ -80,12 +80,6 @@ jobs:
         run: |
           bosh create-release --force --final --tarball=tile/releases/falcon-boshrelease.tgz --version ${VERSION}
 
-      - name: Create pivotal tile
-        if: env.SKIP_BUILD == 'false'
-        run: |
-          sed "s/[0-9][0-9.]*/$VERSION/g" -i tile/version
-          cd tile && kiln bake --skip-fetch --final -o crowdstrike-falcon-cf-${VERSION}.pivotal
-
       - name: Create branch and commit changes
         if: env.SKIP_BUILD == 'false'
         run: |
@@ -100,7 +94,6 @@ jobs:
 
           - Updated falcon-installer to latest version
           - Created bosh release ${VERSION}
-          - Generated pivotal tile for ${VERSION}"
 
           git push origin "${BRANCH_NAME}"
 
@@ -115,7 +108,6 @@ jobs:
 
           - Updated falcon-installer to latest version
           - Created bosh release ${VERSION}
-          - Generated pivotal tile for ${VERSION}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -129,7 +121,6 @@ jobs:
             echo "- Version: ${VERSION}" >> $GITHUB_STEP_SUMMARY
             echo "- Branch: ${BRANCH_NAME}" >> $GITHUB_STEP_SUMMARY
             echo "- Bosh release: tile/releases/falcon-boshrelease.tgz" >> $GITHUB_STEP_SUMMARY
-            echo "- Pivotal tile: tile/crowdstrike-falcon-cf-${VERSION}.pivotal" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "A pull request has been created. After merging, create a release with tag ${TAG}." >> $GITHUB_STEP_SUMMARY
           fi

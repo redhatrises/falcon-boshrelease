@@ -15,7 +15,6 @@ config/private.yml
 metadata
 product/
 release/
-releases/*.tgz
 *.pivotal
 
 *.zip
