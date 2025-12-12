@@ -93,7 +93,7 @@ jobs:
           git commit -m "Update release components for ${TAG}
 
           - Updated falcon-installer to latest version
-          - Created bosh release ${VERSION}
+          - Created bosh release ${VERSION}"
 
           git push origin "${BRANCH_NAME}"
 
