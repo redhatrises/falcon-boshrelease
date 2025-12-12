@@ -26,6 +26,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install bosh-cli and kiln
+        run: |
+          BOSHREL=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/cloudfoundry/bosh-cli/releases/latest) | sed s/v//g)
+          curl -sSLo /tmp/bosh https://github.com/cloudfoundry/bosh-cli/releases/latest/download/bosh-cli-${BOSHREL}-linux-amd64
+          chmod +x /tmp/bosh && sudo mv /tmp/bosh /usr/local/bin/bosh
+
+          KILNREL=$(basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/pivotal-cf/kiln/releases/latest) | sed s/v//g)
+          curl -sSLo /tmp/kiln https://github.com/pivotal-cf/kiln/releases/latest/download/kiln-linux-amd64-${KILNREL}
+          chmod +x /tmp/kiln && sudo mv /tmp/kiln /usr/local/bin/kiln
+
       - name: Set Release Version
         run: |
           echo "VERSION=$(echo $TAG | sed s/v//g)" >> $GITHUB_ENV
