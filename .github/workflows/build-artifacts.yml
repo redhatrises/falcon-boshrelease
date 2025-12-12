@@ -115,7 +115,7 @@ jobs:
 
           - Updated falcon-installer to latest version
           - Created bosh release ${VERSION}
-          - Generated pivotal tile for ${VERSION}
+          - Generated pivotal tile for ${VERSION}"
 
       - name: Output summary
         run: |
