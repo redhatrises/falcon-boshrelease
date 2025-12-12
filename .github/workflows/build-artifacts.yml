@@ -39,10 +39,13 @@ jobs:
           curl -sSLo /tmp/kiln https://github.com/pivotal-cf/kiln/releases/latest/download/kiln-linux-amd64-${KILNREL}
           chmod +x /tmp/kiln && sudo mv /tmp/kiln /usr/local/bin/kiln
 
-      - name: Set version from input or generate
+      - name: Set version from input
         run: |
-          echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
-          echo "TAG=v${{ github.event.inputs.version }}" >> $GITHUB_ENV
+          # Strip 'v' prefix from version if present
+          VERSION="${{ github.event.inputs.version }}"
+          VERSION="${VERSION#v}"
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "TAG=v${VERSION}" >> $GITHUB_ENV
 
       - name: Check if version already exists
         run: |
