@@ -107,7 +107,7 @@ jobs:
             --body "This PR updates the release components for version ${VERSION}:
 
           - Updated falcon-installer to latest version
-          - Created bosh release ${VERSION}
+          - Created bosh release ${VERSION}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
